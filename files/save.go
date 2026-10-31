@@ -17,6 +17,7 @@ import (
 // Returns:
 //   - error: nil if operation succeeds else an error
 func Save(newRecord Record, filename string) error {
+	// TODO: FIX bug in Save function that prevents data from being written to the `data/records.json` file
 
 	// open file in create or write modes
 	file, err := os.OpenFile(filename, os.O_CREATE+os.O_WRONLY, 0755)
