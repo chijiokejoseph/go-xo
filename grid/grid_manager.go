@@ -30,12 +30,12 @@ func Contains(src [][3]int, test []int) bool {
 	return false
 }
 
-// *Positions.GradeComputer checks if the computer has secured a complete set
+// *GridManager.GradeComputer checks if the computer has secured a complete set
 // or rather has won the user. Returns nil if the computer has not won and there are
 // still spaces on the board.
 //
-// Returns players.Lose if the computer wins,or returns players.Draw if there are no
-// more spaces on the game's board for that round.
+// Returns players.Lose if the computer wins,or players.Draw if there are no
+// more spaces on the game's board else players.Pending.
 func (gm *GridManager) GradeComputer(pos int) pl.Status {
 	gm.Computer = append(gm.Computer, pos)
 	if Contains(gm.WinSlots, gm.Computer) {
@@ -47,12 +47,12 @@ func (gm *GridManager) GradeComputer(pos int) pl.Status {
 	}
 }
 
-// *Positions.GradeUser checks if the user has secured a complete set
+// *GridManager.GradeUser checks if the user has secured a complete set
 // or rather has won the user. Returns nil if the user has not won and there are
 // still spaces on the board.
 //
-// Returns players.Win if the user wins, or returns players.Draw if there are no
-// more spaces on the game's board for that round.
+// Returns players.Lose if the computer wins,or players.Draw if there are no
+// more spaces on the game's board else players.Pending.
 func (gm *GridManager) GradeUser(pos int) pl.Status {
 	gm.Player = append(gm.Player, pos)
 	if Contains(gm.WinSlots, gm.Player) {
